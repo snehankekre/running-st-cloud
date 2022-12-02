@@ -33,3 +33,4 @@ def is_running_on_cloud() -> bool:
 
 
 st.write("App running on Community Cloud?", is_running_on_cloud())
+
