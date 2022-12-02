@@ -6,8 +6,7 @@ from streamlit import config, runtime, url_util
 
 
 def is_running_on_cloud() -> bool:
-    """Return a copy of the HTTP request headers for the current session's
-    WebSocket connection. If there's no active session, return None instead.
+    """Return True if the app is running on Community Cloud. Defaults to False.
     Raise an error if the server is not running.
     Note to the intrepid: this is an UNSUPPORTED, INTERNAL API. (We don't have plans
     to remove it without a replacement, but we don't consider this a production-ready
