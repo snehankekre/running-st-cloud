@@ -8,7 +8,7 @@ import streamlit as st
 from streamlit import config, runtime, url_util
 
 
-def get_websocket_headers() -> Optional[Dict[str, str]]:
+def is_running_on_cloud() -> Optional[Dict[str, str]]:
     """Return a copy of the HTTP request headers for the current session's
     WebSocket connection. If there's no active session, return None instead.
     Raise an error if the server is not running.
@@ -28,10 +28,11 @@ def get_websocket_headers() -> Optional[Dict[str, str]]:
         raise RuntimeError(
             f"SessionClient is not a BrowserWebSocketHandler! ({session_client})"
         )
+    hostname = dict(session_client.request.headers)["Host"]
 
-    st.write(session_client.request)
+    if hostname.endswith("streamlit.app"):
+        return True
+    return False
 
-    return dict(session_client.request.headers)
 
-
-st.write(get_websocket_headers())
+st.write("App running on Community Cloud?", is_running_on_cloud())
