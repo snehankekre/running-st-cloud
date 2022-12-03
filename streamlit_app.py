@@ -2,7 +2,7 @@ from streamlit.runtime.scriptrunner import get_script_run_ctx
 from streamlit.web.server.browser_websocket_handler import BrowserWebSocketHandler
 
 import streamlit as st
-from streamlit import config, runtime, url_util
+from streamlit import runtime
 
 
 def is_running_on_cloud() -> bool:
